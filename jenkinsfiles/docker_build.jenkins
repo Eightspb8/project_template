@@ -15,7 +15,7 @@ pipeline {
         stage("docker login") {
             steps {
                 echo " ============== docker login =================="
-                withCredentials([usernamePassword(credentialsId: 'eightspb_docker', usernameVariable: 'eightspb', passwordVariable: 'Fgh0rc1vfwbz2')]) {
+                withCredentials([usernamePassword(credentialsId: 'eightspb', usernameVariable: 'eightspb', passwordVariable: 'Fgh0rc1vfwbz2')]) {
                     sh """
                     docker login -u $USERNAME -p $PASSWORD
                     """
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/toolbox') {
-                	sh 'docker build -t eightspb/toolbox:latest . '
+                	sh 'docker build -t Eightspb8/toolbox:latest . '
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo " ============== start pushing image =================="
                 sh '''
-                docker push eightspb/toolbox:latest
+                docker push Eightspb8/toolbox:latest
                 '''
             }
         }
